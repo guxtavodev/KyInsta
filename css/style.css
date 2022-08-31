@@ -5,7 +5,7 @@ body{
   background-size: 400% 400%;
   background-repeat: no-repeat;
   color: #fff;
-  animation: mygradient 2s ease infinite;
+  animation: mygradient 3s ease infinite;
 }
 
 h1{
@@ -29,3 +29,14 @@ div h4{
   } 
   
 }
+
+button {
+  border: 0;
+  background: #405DE6;
+  border-radius: 6px;
+  color: #fff;
+}
+
+
+
+
