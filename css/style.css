@@ -1,0 +1,31 @@
+body{
+  background-image: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  width: 100%;
+  height: 100vh;
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  color: #fff;
+  animation: mygradient 2s ease infinite;
+}
+
+h1{
+  text-align: center;
+}
+
+div h4{
+  text-align: center;
+}
+
+@keyframes mygradient { 
+  0% { 
+    background-position: 0% 50%; 
+    
+  } 50% { 
+    background-position: 100% 50%; 
+    
+  } 100% { 
+    background-position: 0% 50%; 
+    
+  } 
+  
+}
