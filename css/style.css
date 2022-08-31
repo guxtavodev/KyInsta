@@ -37,6 +37,16 @@ button {
   color: #fff;
 }
 
+#popup{
+  opacity: 0%;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  width: 24.5rem;
+  height: 20rem;
+  padding: 2px;
+  border: 2px solid #405DE6;
+}
 
 
 
