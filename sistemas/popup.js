@@ -10,7 +10,20 @@ class PopUp {
     divA.innerHTML= `
       <h2>${title}</h2>
       ${html}
+      <br>
+
     `
-  
-  }
+    document.getElementById("close").addEventListener('click', function() {
+  divA.style.opacity="0%"
+  document.getElementById("bodyo").style.opacity="100%"
+  divA.innerHTML=""
+  })
+ }
+ closePop() {
+   document.getElementById("close").addEventListener('click', function() {
+  divA.style.opacity="0%"
+  document.getElementById("bodyo").style.opacity="100%"
+  divA.innerHTML=""
+  })
+ }
 }
