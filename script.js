@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Paragraph extends React.Component {
+class Header extends React.Component {
   render() {
-    return(
-      <p>{this.props.text}</p>
-    )
+    <header>
+      <h1>KyInsta</h1>
+    </header>
   }
 }
 
 ReactDOM.render( 
-  <Paragraph text="Hello" />, 
+  <Header />, 
   document.getElementById('root') 
 );
