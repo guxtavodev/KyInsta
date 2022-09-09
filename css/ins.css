@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Condensed&display=swap');
+
+:root{
+  --corUai: #c4f8ff;
+}
+
+body{
+  background: #fff;
+  max-width: 100%;
+  height: 100vh;
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  font-family: 'Roboto Condensed';
+  color: #00b3ff;
+  animation: mygradient 3s ease infinite;
+}
+
+h1{
+  margin: 0;
+  font-family: 'Merriweather';
+}
+
+
+
+nav { 
+  position: absolute; 
+  top: 3px; 
+  left: 7em; 
+} 
+
+nav ul{
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li{
+  margin-left: 7px;
+  list-style: none;
+  text-decoration:none;
+  color: #000;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color:#00b3ff;
+}
+
+header{
+  display: flex;
+  flex-direction: row;
+}
+
+
