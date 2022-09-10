@@ -16,7 +16,7 @@ body{
   font-family: 'Roboto Condensed', Arial;
 }
 
-h1, h3, h4{
+h1, h3, h4, h5{
   text-align: center;
   margin: 0;
   font-family: 'Merriweather';
@@ -47,7 +47,7 @@ button {
   color: #fff;
 }
 
-div{
+div#yesk{
   background: var(--backgroundDiv);
   margin: 0 auto;
   width: 100%;
@@ -86,4 +86,23 @@ header{
 
 div#mt p{
   text-align: center;
+}
+
+.info-bsc{
+  text-align: center;
+}
+
+.infos{
+  display: flex;
+  flex-direction: row;
+  margin-left: 5em;
+}
+
+.infos #yesj{
+  margin-left: 7px;
+  text-align: center;
+}
+
+#yesjj{
+  margin-left: 70px;
 }
