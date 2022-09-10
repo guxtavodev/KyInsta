@@ -107,9 +107,11 @@ div#mt p{
   text-align: center;
 }
 
-@media screen and (min-width: 375px) { 
+@media screen and (max-width: 480px) { 
   body { 
     max-width: 20rem;
   } 
-  
+  html{
+    width: 100%;
+  }
 }
