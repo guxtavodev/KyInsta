@@ -106,3 +106,10 @@ div#mt p{
 #yesjj{
   text-align: center;
 }
+
+@media screen and (min-width: 375px) { 
+  body { 
+    width: 20rem;
+  } 
+  
+}
