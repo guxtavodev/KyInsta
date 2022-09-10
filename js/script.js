@@ -1,17 +1,4 @@
-function CriarReplie(comment, answer) {
-  pp.popUp("Criar Resposta", `
-    <label>Qual vai ser a resposta?: </label> <input id="prg" type="text"> <br>
-    <label>Qual vai ser a resposta?: </label>
-    <input type="text">
-    <a id='pr'><button class="pr" id="close">Ok</button></a>
-    <script>
-  `)
-  document.getElementById("pr").addEventListener('click', function() {
-  console.log(document.getElementById("prg").value)
-})
-}
 
-const pp = new PopUp()
 
 /* async function Teste() {
   try {
@@ -26,4 +13,10 @@ const pp = new PopUp()
 
 Teste()*/
 
+async function Face() {
+  let response = await fetch("https://graph.facebook.com/v14.0/me?fields=id%2Cname&access_token=EAAURMmzG7MgBAEohFBqktDyNGqlZAL1umgCEUAkXiR2rGRsBFg9bvYijbC9CYZBNtmKbp25uyiGS2X7Ro8MLNLN5lKx5hAOvQuGUf1JM0yPsqcWvy51wHzDyQB361ZC6BeW4YtR5ZAjkKLCgAeExeWSYx2m31ZBAKD9SN1g7RVTZB6ymZCv0mUBkSwzcHsb9K1OvjHXls1E5wZDZD")
+  const data = response
+  console.log(data)
+}
 
+Face()

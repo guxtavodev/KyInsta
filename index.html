@@ -6,14 +6,25 @@
      <link rel="stylesheet" href="./css/style.css">
   </head> 
   <body> 
+    <script> 
+    window.fbAsyncInit = function() { 
+      FB.init({ 
+      appId : '1426283154566344', 
+      autoLogAppEvents : true, 
+      xfbml : true, 
+      version : 'v14.0' 
+      }); 
+    }; 
+    </script> 
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <header>
-      <h1>KyInsta</h1>
+      <h1>iDash</h1>
     </header>
     <nav>
       <ul>
         <li><a href="index.html">• Ínicio</a></li>
         <li><a href="insigns.html">• Insights</a></li>
-        <li><a href="newreplie.html"> • Settings</a></li>
+        <li><a href="./configs/Account.html"> • Settings</a></li>
       </ul>
     </nav>
     <main>
