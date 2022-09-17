@@ -1,32 +1,65 @@
-# imports e conjuntos em funcoes
-from flask import Flask, render_template, jsonify, request
-from flask_cors import CORS
-import Trends
-import Legends
+# imports
 
-# app
+from flask import Flask, render_template, jsonify, request
+import pandas as pd
+import openpyxl
+import BaseDados
+import random
+from ins import *
+
+print(Relatorio(50, 50, 50))
+
+# Importando Modulo do Excel
+Excel = BaseDados.Excel
+
+Excel.ClassificarTrends()
+
+# Bloco das classificações de vídeos
+videosMaiores=[]
+videosMedios=[]
+videosPequenos=[]
+
+# carrega os dados
+tabela = pd.read_excel("TrendsDiaria.xlsx")
+numeroDeLinhas = tabela.dropna(how='all').shape[0]
+# Aqui ja vai escrevendo os videos de acordo com a classificação 
+linha=0
+for linha in range(tabela.shape[0]):
+	     rep = tabela.loc[linha, "Quantidade de vídeos"]
+	     if rep < 600:
+	     	videosPequenos.append(f"{tabela.loc[linha, 'Hashtag']}: {tabela.loc[linha, 'Tema']}")
+	     if rep > 600 and rep < 1200:
+	     	videosMedios.append(f"{tabela.loc[linha, 'Hashtag']}: {tabela.loc[linha, 'Tema']}")
+	     if rep > 1201:
+	     	videosMaiores.append(f"<p id='tab'>{tabela.loc[linha, 'Hashtag']}: {tabela.loc[linha, 'Tema']}</p><br>")
+	     linha+1
+
+# Bloco das legendas recomendadas
+
+legendas = [
+	"<p id='tab'>Eu sou o melhor de mim!</p><br>",
+	"<p id='tab'>Deixando a vida fluir. Pode levar o que não é para ficar e trazer o que me fará bem.</p><br>",
+	"<p id='tab'>Em (re)construção. Ainda bem.</p>"
+]
+
+# Já vai inicializando o site.
 app = Flask(__name__)
 
-# cors
-CORS(app)
-# as páginas
-@app.route("/")
+
+# Página Inicial
+@app.route("/", methods=["GET", "POST"])
 def homepage():
-  return render_template("index.html")
+	#	sg = request.form["followers"]
+	#	ts = request.form["contasa"]
+	#	js = request.form["en"]
+	fl = int(request.args.get("followers"))
+	ca = int(request.args.get("contasa"))
+	en = int(request.args.get("en"))
+	usj = Relatorio(en, ca, fl)
+		
+	return render_template('index.html', videos="".join(map(str,videosMaiores)), legendasr="".join(map(str,legendas)), uis="".join(map(str, usj)))
+	
 
-@app.route("/insights")
-def insightsp():
-  return render_template("insights.html")
-
-@app.route("/login")
-def loginp():
-  return render_template("login.html")
-
-@app.route("/cadastro")
-def cadastro():
-  return render_template("cadastro.html")
-
-# API's
-#lançar o site
-if __name__ == '__main__':
-  app.run(host='0.0.0.0')
+# Dar run webapp
+if __name__ == "__main__":
+	app.run(host="0.0.0.0")
