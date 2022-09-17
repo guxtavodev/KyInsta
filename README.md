@@ -1,18 +1,34 @@
-# KyInsta
-Um mini site profissional para gestão de conta do Instagram e TikTok
+# KyVolution
+O KyVolution é um projeto que consiste em um web app que auxilia os criadores de conteúdo do Instagram. Ele é um projeto feito com: HTML, CSS, JavaScript, Python e Bootstrap. Ele ainda não tem uma data para lançamento, pois ainda está em desenvolvimento,
 
-# Funçoes
-- Dar ideias de videos semanalmente
-- Postar vídeos com mais rapidez
-- Receber dicas
-- Ter respostas automáticas
+# Objetivos
+-> Diminuir as chamadas "compras de seguidores" que são ilegais.<br>
+-> Fazer as pessoas crescerem o perfil na rede social<br>
+-> Facilitar as pessoas gerenciar o perfil<br>
+-> Diminuir o tempo para criar vídeos.
 
-# Etapas
-- Fazer a paleta de cores - complete
-- Fazer os arquivos
-- Criar as etapas para o projeto dar certo
-- Inventar um nome
-- Organizar o código(comentários, id's...)
-- Fazer as páginas extras(newreplie, legendz, etc.)
-- Criar e já ir testando a API consumindo-as com JavaScript no front end
-- Criar vídeos e imagens para pré-divulgação
+# Quais as funcionalidades?
+-> Gerador de biografia<br>
+-> Informações do perfil e dicas para melhorar<br>
+-> Dicas de vídeos e storys todos os dias.<br>
+-> Legendas Recomendadas de acordo com o vídeo.<br>
+
+<h4>E é isso galera, ta aí as novas informações do projeto. Obrigado pela visita ❤</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
