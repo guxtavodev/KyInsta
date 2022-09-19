@@ -26,6 +26,11 @@
       text-decoration: underline;
       color: #0000FF;
     }
+    @media (min-width: 768px) and (max-width: 1199.98px) {
+      body{
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -60,15 +65,15 @@
 </div>
 <div class="container rounded p-3 mb-2 bg-light text-dark">
   <h3><strong>Cadastre-se</strong></h3>
-  <form>
+  <form action="/cadastro" method="POST">
     <div class="form-group col-md-6"> 
       <label for="inputUsername">Nome de usuário</label> 
-      <input type="text" class="form-control" id="inputUsername" placeholder="Nome de usuário">
+      <input type="text" class="form-control" name="username" id="inputUsername" placeholder="Nome de usuário">
 
     </div>
     <div id="ueie" class="form-group col-md-6">
       <label>Qual plataforma você usa?</label>
-      <select class="form-control">
+      <select name="plt" class="form-control">
         <option name="insta" value="insta">Instagram</option>
         <option name="tktk" value="tktk">TikTok</option>
         <option name="kwai" value="kwai">Kwai</option>

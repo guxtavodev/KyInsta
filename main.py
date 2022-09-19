@@ -45,6 +45,34 @@ legendas = [
 # Já vai inicializando o site.
 app = Flask(__name__)
 
+def gerarToken():
+	inicio = [
+		"hd",
+		"ys",
+		"hh",
+		"hi",
+		"jd",
+		"jx"
+	]
+	meio = [
+		"in",
+		"tk",
+		"ki",
+		"ij",
+		"js",
+		"dj"
+	]
+	final = [
+		"hx",
+		"mx",
+		"jf",
+		"cj",
+		"cc",
+		"jx"
+	]
+	tokenFinal = random.choice(inicio) + random.choice(meio) + random.choice(final)
+	return tokenFinal
+
 
 # Página Inicial
 @app.route("/", methods=["GET", "POST"])
@@ -58,6 +86,23 @@ def homepage():
 	usj = Relatorio(en, ca, fl)
 		
 	return render_template('index.html', videos="".join(map(str,videosMaiores)), legendasr="".join(map(str,legendas)), uis="".join(map(str, usj)))
+
+@app.route("/cadastro", methods=["GET", "POST"])
+def cadastro():
+	if request.method == "POST":
+		username = request.form["username"]
+		plataforma = request.form["plt"]
+		print("====> Novo usuário!")
+		print("Username: ", username)
+		print("Plataforma: ", plataforma)
+	return render_template("signup.html")
+	
+@app.route("/login", methods=["GET", "POST"])
+def login():
+	if request.method == "POST":
+		token = request.form["token"]
+	
+	return render_template("sign-in.html")
 	
 
 # Dar run webapp

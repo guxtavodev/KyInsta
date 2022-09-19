@@ -26,6 +26,11 @@
       text-decoration: underline;
       color: #0000FF;
     }
+    @media (min-width: 768px) and (max-width: 1199.98px) {
+      body{
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -60,10 +65,10 @@
 </div>
 <div class="container rounded bg-light text-dark">
   <h4><strong>Conecte-se</strong></h4>
-  <form>
+  <form action="/login" method="POST">
     <div class="form-group col-md-6"> 
       <label for="inputToken">Token de acesso</label> 
-      <input type="text" class="form-control" id="inputToken" placeholder="Digite seu token de acesso a conta">
+      <input type="text" class="form-control" name="token" id="inputToken" placeholder="Digite seu token de acesso a conta">
 
     </div>
 
