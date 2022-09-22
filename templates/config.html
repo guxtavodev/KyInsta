@@ -7,10 +7,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <title></title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Condensed&display=swap');
     .container{
       text-align: center;
       padding: 5px;
     }
+    body{
+      background: #EE1D52;
+    }
+    
+  
     @media (min-width: 768px) and (max-width: 1199.98px) {
       body{
         max-width: 100%;
@@ -35,10 +41,10 @@
         </div> 
       </nav>
       
-      <div class="container rounded bg-secondary text-light">
+      <div class="container rounded text-light">
         <h4><strong>Conta</strong></h4>
         <!-- Configuração-->
-        <form action="/config">
+        <form action="/" method="POST">
           <div class="form-group">
             <label>Nome de usuário</label>
             <input type="text" class="form-control" value="Nome de usuário">
@@ -55,9 +61,13 @@
               <option value="kw">Kwai</option>
             </select>
           </div>
+          <div class="form-group">
+            <label>Token</label>
+            <input type="password" value="taltaltal" disabled>
+          </div>
           <!-- Botões -->
           <button type="submit" class="btn btn-primary">Enviar alterações</button>
-          <button type="submit" class="btn btn-danger">Excluir Conta</button>
+          <button type="submit" class="btn btn-warning">Excluir Conta</button>
         </form>
       </div>
 

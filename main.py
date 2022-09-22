@@ -3,16 +3,12 @@
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 import openpyxl
-import BaseDados
 import random
 from ins import *
 
 print(Relatorio(50, 50, 50))
 
-# Importando Modulo do Excel
-Excel = BaseDados.Excel
 
-Excel.ClassificarTrends()
 
 # Bloco das classificações de vídeos
 videosMaiores=[]
@@ -37,7 +33,7 @@ for linha in range(tabela.shape[0]):
 # Bloco das legendas recomendadas
 
 legendas = [
-	"<p id='tab'>Eu sou o melhor de mim!</p><br>",
+	"<p id='tab'>Eu sou o melhor de mim!</p><br>",
 	"<p id='tab'>Deixando a vida fluir. Pode levar o que não é para ficar e trazer o que me fará bem.</p><br>",
 	"<p id='tab'>Em (re)construção. Ainda bem.</p>"
 ]
@@ -75,17 +71,13 @@ def gerarToken():
 
 
 # Página Inicial
-@app.route("/", methods=["GET", "POST"])
-def homepage():
-	#	sg = request.form["followers"]
-	#	ts = request.form["contasa"]
-	#	js = request.form["en"]
-	fl = int(request.args.get("followers"))
-	ca = int(request.args.get("contasa"))
-	en = int(request.args.get("en"))
-	usj = Relatorio(en, ca, fl)
-		
-	return render_template('index.html', videos="".join(map(str,videosMaiores)), legendasr="".join(map(str,legendas)), uis="".join(map(str, usj)))
+@app.route("/")
+def init():
+	return render_template("page-init.html")
+
+@app.route("/inicio", methods=["GET", "POST"])
+def homepage():		
+	return render_template('index.html', videos="".join(map(str,videosMaiores)), legendasr="".join(map(str,legendas)))
 
 @app.route("/cadastro", methods=["GET", "POST"])
 def cadastro():
@@ -103,8 +95,17 @@ def login():
 		token = request.form["token"]
 	
 	return render_template("sign-in.html")
+
+@app.route("/settings", methods=["GET", "POST"])
+def settings():
+	if request.method == "POST":
+		nomeUser = request.form["username"]
+		plataforma = request.form["plt"]
+		senha = request.form["password"]
+		
+	return render_template("config.html")
 	
 
 # Dar run webapp
 if __name__ == "__main__":
-	app.run(host="0.0.0.0")
+	app.run(host="0.0.0.0") 
