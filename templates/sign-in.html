@@ -66,14 +66,18 @@
 <div class="container rounded bg-light text-dark">
   <h4><strong>Conecte-se</strong></h4>
   <form action="/login" method="POST">
-    <div class="form-group col-md-6"> 
-      <label for="inputToken">Token de acesso</label> 
-      <input type="text" class="form-control" name="token" id="inputToken" placeholder="Digite seu token de acesso a conta">
+    <div class="form-group"> 
+      <label for="inputToken">Nome de usuário</label> 
+      <input type="text" class="form-control" name="token" id="inputToken" placeholder="Digite seu nome de usuário">
 
+    </div>
+    <div class="form-group">
+      <label>Senha</label>
+      <input type="password" class="form-control" placeholder="Digite sua senha">
     </div>
 
     <button style="text-align: center;" type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
-    <a id="ce">Não tem uma conta?</a> | <a id="ce">Esqueceu o token?</a>
+    <a id="ce">Não tem uma conta?</a> | <a id="ce">Esqueceu a senha?</a>
   </form>
 </div>
 </body>

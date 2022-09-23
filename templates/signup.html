@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Inscrição</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Condensed&display=swap');
@@ -30,6 +30,10 @@
       body{
         max-width: 100%;
       }
+    }
+    #tokens{
+      opacity: 0%;
+      display: inline-block;
     }
   </style>
 </head>
@@ -66,12 +70,12 @@
 <div class="container rounded p-3 mb-2 bg-light text-dark">
   <h3><strong>Cadastre-se</strong></h3>
   <form action="/cadastro" method="POST">
-    <div class="form-group col-md-6"> 
+    <div class="form-group"> 
       <label for="inputUsername">Nome de usuário</label> 
       <input type="text" class="form-control" name="username" id="inputUsername" placeholder="Nome de usuário">
 
     </div>
-    <div id="ueie" class="form-group col-md-6">
+    <div id="ueie" class="form-group">
       <label>Qual plataforma você usa?</label>
       <select name="plt" class="form-control">
         <option name="insta" value="insta">Instagram</option>
@@ -80,7 +84,11 @@
       </select>
       
     </div>
-
+    <div class="form-group">
+      <label>Senha</label>
+      <input class="form-control" type="password">
+    </div>
+    <input type="password" name="token" id="tokens">
     <button style="text-align: center;" type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
     <a id="ce">Já tem uma conta?</a>
   </form>
@@ -131,9 +139,10 @@
     console.log(letraA)
     var numA = numeros[Math.floor(Math.random() * numeros.length)]
     var token = letraA + numA
-    return console.log(token)
+    return token
   }
-  GerarToken()
+  document.getElementById("tokens").setAttribute("value", GerarToken())
+  console.log(document.getElementById("tokens").getAttribute("value"))
   var select = document.querySelector('select'); 
   select.addEventListener('change', function() { 
       var option = this.selectedOptions[0]; 
@@ -141,7 +150,15 @@
       console.log(texto); 
     
   });
+  localStorage.setItem("username", document.getElementById("inputUsername").value)
   
+  $.ajax({
+    type: "POST",
+    url: "http://192.168.0.5/api/cadastro",
+    data: {
+      "kk": "haha"
+    }
+  })
   
 </script>
 </html>
