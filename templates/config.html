@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <title></title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Condensed&display=swap');
@@ -35,9 +34,9 @@
       </button> 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> 
         <div class="navbar-nav"> 
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(Página atual)</span></a> 
+          <a class="nav-item nav-link active" href="{{ url_for('homepage') }}">Home <span class="sr-only">(Página atual)</span></a> 
           <a class="nav-item nav-link" href="#">Insights</a> 
-          <a class="nav-item nav-link" href="#">Configurações</a> 
+          <a class="nav-item nav-link" href="{{ url_for('settings') }}">Configurações</a> 
           </div> 
         </div> 
       </nav>
@@ -56,7 +55,7 @@
           </div>
           <div class="form-group">
             <label>Plataforma</label>
-            <select class="form-control" name="select">
+            <select class="form-control" name="plt">
               <option value="insta" selected>Instagram</option>
               <option value="tktk">TikTok</option>
               <option value="kw">Kwai</option>
@@ -64,37 +63,26 @@
           </div>
           <div class="form-group">
             <label>Token</label>
-            <input type="password" value="taltaltal" disabled>
+            <input type="password" name="iusername" id="tokens" disabled>
           </div>
           <!-- Botões -->
-          <button type="submit" class="btn btn-primary" type="chs">Enviar alterações</button>
-          <button type="submit" class="btn btn-warning">Excluir Conta</button>
+          <button type="submit" class="btn btn-primary">Enviar alterações</button>
+         
         </form>
       </div>
 
 </body>
-<!-- Import de bibliotecas -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Script's -->
 <script>
-  var username = document.getElementById("usernamei")
+   var username = document.getElementById("usernamei")
   var senha = document.getElementById("pass")
   
   username.setAttribute("value", localStorage.getItem("username"))
   senha.setAttribute("value", localStorage.getItem("senha"))
-  var buttonSend = document.getElementById("chs")
-  
-  $("#chs").on('submit', function(e) {
-    e.preventDefault();
-    Swal.fire(
-      'Parabéns!',
-      'Suas alterações foram enviadas!',
-      'success'
-    )
-  })
+  var token = document.getElementById("tokens")
+  token.setAttribute("value", localStorage.getItem("username"))
 </script>
 </html>

@@ -86,11 +86,11 @@
     </div>
     <div class="form-group">
       <label>Senha</label>
-      <input class="form-control" type="password">
+      <input id="senha" name="password" class="form-control" type="password">
     </div>
     <input type="password" name="token" id="tokens">
-    <button style="text-align: center;" type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
-    <a id="ce">Já tem uma conta?</a>
+    <button id="hs" style="text-align: center;" type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+    <a id="ce" href="{{ url_for('login') }}">Já tem uma conta?</a>
   </form>
 </div>
 <div class="alert alert-primary" role="alert">Se ainda não souber usar o site, veja os tutoriais <a href="#" class="alert-link">clicando aqui</a>. É melhor assistir os tutoriais para saber como usar o site da melhor forma.</div>
@@ -150,7 +150,10 @@
       console.log(texto); 
     
   });
-  localStorage.setItem("username", document.getElementById("inputUsername").value)
+  $("#hs").click(function() {
+  	localStorage.setItem("username", document.getElementById("inputUsername").value)
+  	localStorage.setItem("senha", document.getElementById("senha").value)
+  })
   
   $.ajax({
     type: "POST",

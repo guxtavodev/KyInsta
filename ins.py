@@ -39,7 +39,26 @@ def GiveResult(NumeroSeguidores, Engajamento, ContasAlcancadas):
 		OpnAlcance = "Seu alcance está top, mas pode melhorar, crie uma boa relação com seus usuários nos comentários, sempre responda os comentários com maior educação e faça com que o usuário curta seu perfil e volte mais vezes, se quiser relembre vídeos do passado que deram certo e reposte. Crie conteúdos originais! As vezes as Idéias de vídeos do KyVolution são originais!"
 	if ContasAlcancadas >= 140:
 		OpnAlcance = "Seu número de contas alcançadas tá top! Mas se quiser melhorar, crie mais engajamento, e crie vídeos que façam os usuários marcar um amigo, de opiniões ou algo do tipo!"
-		
+	# Fim dos relatórios
+	
+	# Começo das Opiniões finais
+	lista = []
+	lista.append(f"<li class='list-group-item'>{OpnSeguidores}</li>")
+	lista.append(f"<li class='list-group-item'>{OpnAlcance}</li>")
+	lista.append(f"<li class='list-group-item'>{OpnEngajamento}</li>")
+	print(lista)
+	# Bloco de código.
+	blocoDeCodigoHtml = """ 
+	  <div style="color: #000;" class="container">
+      	<ul class="list-group list-group-flush">
+      		{}
+      	</ul>
+      </div>
+	""".format("".join(map(str, lista)))
+	print(blocoDeCodigoHtml)
+	return blocoDeCodigoHtml
+	
+
 		
 	
 	

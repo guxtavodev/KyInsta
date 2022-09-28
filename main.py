@@ -1,6 +1,6 @@
 # imports
 
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 import pandas as pd
 import openpyxl
 import random
@@ -61,7 +61,7 @@ for linha in range(tabela.shape[0]):
 # Bloco das legendas recomendadas
 
 legendas = [
-	"<p id='tab'>Eu sou o melhor de mim!</p><br>",
+	"<p id='tab'>Eu sou o melhor de mim!</p><br>",
 	"<p id='tab'>Deixando a vida fluir. Pode levar o que não é para ficar e trazer o que me fará bem.</p><br>",
 	"<p id='tab'>Em (re)construção. Ainda bem.</p>"
 ]
@@ -113,36 +113,64 @@ def init():
 @app.route("/inicio", methods=["GET", "POST"])
 def homepage():		
 	return render_template('index.html', videos="".join(map(str,videosMaiores)), legendasr="".join(map(str,legendas)))
+	
+@app.route("/insights", methods=["GET", "POST"])
+def insights():
+	if request.method == "POST":
+		seguidores = int(request.form["followers"])
+		contas_alcancadas = int(request.form["ca"])
+		engajamento = int(request.form["engajamento"])
+		rela = GiveResult(seguidores, engajamento, contas_alcancadas)
+		return render_template("insight.html", rel=rela)
+	return render_template("insight.html")
 @app.route("/cadastro", methods=["GET", "POST"])
 def cadastro():
 	if request.method == "POST":
 		username = request.form["username"]
 		plataforma = request.form["plt"]
+		senha = request.form["password"]
 		print("====> Novo usuário!")
 		print("Username: ", username)
 		print("Plataforma: ", plataforma)
-		print(request.form["token"])
-	return render_template("signup.html", token = GerarToken())
+		if db.Verificar(username) == False:
+			msg_erro = "Já existe um usuário com este nome!"
+			url = url_for("cadastro")
+			return render_template("error.html", msg_err=msg_erro, link=url)
+		else:
+			db.criarUser(username, senha, plataforma)
+			return redirect("/inicio")
+		
+	return render_template("signup.html")
 	
 @app.route("/login", methods=["GET", "POST"])
 def login():
 	if request.method == "POST":
-		token = request.form["username"]
-	
+		username = request.form["username"]
+		senha = request.form["password"]
+		if db.Verificar(username) == False:
+			if db.ValidarUser(username, senha) == False:
+				msg_err = "Senha incorreta!"
+				url = url_for("login")
+				return render_template("error.html", msg_err=msg_err, link=url)
+			else:
+				return redirect("/inicio")
+		else:
+			txt_erro = "Não existe usuário com este nome!"
+			url = url_for("login")
+			return render_template("error.html", msg_err=txt_erro, link=url)
 	return render_template("sign-in.html")
 
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
 	if request.method == "POST":
 		nomeUser = request.form["username"]
-		plataforma = request.form["plt"]
 		senha = request.form["password"]
-		print(nomeUser)
-		print(plataforma)
-		print(senha)
+		plataforma = request.form["plt"]
+		db.editarUser(nomeUser, senha, plataforma)
+		return redirect("/inicio")
 	return render_template("config.html")
 
-@app.route("/api/cadastro", methods=["GET", "POST"])
+@app.route("/api/excluir", methods=["GET", "POST"])
 def cadastrar():
 	if request.method == "POST":
 		print(request.data)

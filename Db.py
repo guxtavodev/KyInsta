@@ -6,7 +6,7 @@ class DB:
 		cursor = conect.cursor()
 		cursor.execute("""
 			INSERT INTO usr (username, senha, plt)
-			VALUES (?,?,?,?)
+			VALUES (?,?,?)
 		""", (username, senha, plt))
 		conect.commit()
 		conect.close()
@@ -15,10 +15,9 @@ class DB:
 		cursor = conect.cursor()
 		cursor.execute(""" 
 			UPDATE usr
-			SET senha = ?
-			SET plt = ?
+			SET senha = ?, plt = ?
 			WHERE username = ?
-		""", (username, senha, plt))
+		""", (senha, plt, username))
 		conect.commit()
 		conect.close()
 	
@@ -31,18 +30,30 @@ class DB:
 		conect.commit()
 		conect.close()
 		 
-	def ValidarUser(token, senha, plt):
+	def ValidarUser(token, senha):
 		conect = sqlite3.connect("tclientes.db")
 		cursor = conect.cursor()
-		cursor.execute("SELECT senha FROM usr WHERE username = ?", (token))
+		cursor.execute("SELECT senha FROM usr WHERE username = ?", (token,))
 		senhab = cursor.fetchall()
-		cursor.execute("SELECT plt FROM usr WHERE username = ?", (token))
-		pltd = cursor.fetchall()
 		conect.close()
-		if senha == senhab[0][0] and plt == pltd[0][0]:
+		if senha == senhab[0][0]:
 			return True
 		else:
 			return False
 			
-	def Verificar(token):
-		pass
+	def Verificar(username):
+		conect = sqlite3.connect("tclientes.db")
+		cursor = conect.cursor()
+		r = cursor.execute("SELECT * FROM usr WHERE username = ?", (username,))
+		if r.fetchone() == None:
+			return True
+		else:
+			return False
+		
+conn = sqlite3.connect("tclientes.db")
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM usr;")
+for linha in cursor.fetchall():
+	print(linha)
+
+conn.close()
